@@ -8,10 +8,10 @@ import { motion } from 'framer-motion'
 
 export default function Hero() {
   return (
-    <main className="container flex justify-center items-center mx-auto h-screen ">
+    <main className="flex justify-center items-center mx-auto h-screen max-w-[330px] md:max-w-[900px]">
       <section className="w-full flex flex-row justify-between items-center">
         <div className='mx-auto'>
-          <h1 className="text-8xl chi-h1">It is</h1>
+          <h1 className="text-center md:text-start text-4xl md:text-8xl chi-h1">It is </h1>
 
             <Timer launchDate="2024-11-11T00:00:00"/>
 

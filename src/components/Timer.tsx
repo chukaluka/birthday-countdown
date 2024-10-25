@@ -57,8 +57,8 @@ export default function Timer({launchDate} : {launchDate: string}) {
   return (
     <div>
           {/* Countdown */}
-      <div className="flex justify-center lg:justify-start mt-3 gap-3">
-        <span className="flex flex-col : justify-center items-center bg-black text-yellow-500/95 text-5xl w-36 py-3 shadow-lg rounded">
+      <div className="flex justify-center mt-3 gap-3 max-w-[330px] md:max-w-[900px]">
+        <span className="flex flex-col justify-center items-center bg-black text-yellow-500/95 text-5xl w-36 py-3 shadow-lg rounded">
           {timeLeft.days}
           <small className="text-sm text-white/70 uppercase font-semibold">Days</small>
         </span>
