@@ -1,8 +1,7 @@
 import React from 'react'
 import Hero from '@/components/Hero'
-import Timer from '@/components/Timer'
 
-export default function Home() {
+export default function Page() {
   return (
     <div>
       <Hero/>
