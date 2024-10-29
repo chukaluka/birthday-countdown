@@ -41,6 +41,7 @@ export function CarouselPlugin() {
                   <CardContent className="">
                     <Image
                     src={image}
+                    alt={`Birthday Image ${index + 1}`}
                     className=""
                     />
                   </CardContent>
