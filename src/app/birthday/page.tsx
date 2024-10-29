@@ -9,8 +9,8 @@ import { CarouselPlugin } from '../../components/CarouselPlugin';
 
 export default function Page() {
   return (
-    <div className='body-div mt-36'>
-      <div className="birthdayCard">
+    <div className='body-div mt-56'>
+      <div className="birthdayCard rounded shadow-md">
         <div className="cardFront">
           <h3 className="happy">Happy Birthday Chi ❤️</h3>
           <div className="balloons">
@@ -30,7 +30,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row items-center justify-center mt-24 gap-10"> {/* Center content */}
+      <div className="flex flex-col md:flex-row items-center justify-center mt-11 gap-10"> {/* Center content */}
         {/* Carousel */}
         <div className="flex justify-center mr-0 md:mr-52">
           <CarouselPlugin />
@@ -40,7 +40,7 @@ export default function Page() {
         <div className="flex justify-center">
           <Popover>
             <PopoverTrigger className="mb-32 md:mb-0">Open</PopoverTrigger>
-            <PopoverContent>Place content for the popover here.</PopoverContent>
+            <PopoverContent className='bg-yellow-300'>Place content for the popover here.</PopoverContent>
           </Popover>
         </div>
       </div>
