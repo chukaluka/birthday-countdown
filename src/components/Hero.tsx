@@ -14,7 +14,7 @@ export default function Hero() {
         <div className='mx-auto'>
           <h1 className="text-center md:text-start text-4xl md:text-8xl chi-h1">It is </h1>
 
-            <Timer launchDate="2024-11-11T00:00:00"/>
+            <Timer launchDate="2024-11-13T00:00:00"/>
 
           <h1 className="mt-3 text-4xl font-medium chi-h1"> to <span className="bg-white px-2 py-1 font-semibold rounded shadow-md">Chi's</span> birthday </h1>
           <div className='border-b pt-3'></div>

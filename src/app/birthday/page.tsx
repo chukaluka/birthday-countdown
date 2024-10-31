@@ -6,10 +6,30 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover";
 import { CarouselPlugin } from '../../components/CarouselPlugin';
+// import audio1 from '../../music/audio1.mp3'
+import { useEffect } from 'react';
+
+
 
 export default function Page() {
+
+  useEffect(() => {
+    const audio = new Audio('/music/audio1.mp3');
+    audio.loop = true; // Set to true if you want the music to loop
+    audio.play().catch((error) => {
+      console.error("Audio playback failed:", error);
+    });
+
+    return () => {
+      audio.pause(); // Pause the audio when the component unmounts
+      audio.currentTime = 0; // Reset the audio to the start
+    };
+  }, []);
+
+  
   return (
     <div className='body-div mt-56'>
+      {/* <audio src={audio1} autoPlay loop /> */}
       <div className="birthdayCard rounded shadow-md">
         <div className="cardFront">
           <h3 className="happy">Happy Birthday Chi ❤️</h3>
@@ -40,7 +60,7 @@ export default function Page() {
         <div className="flex justify-center">
           <Popover>
             <PopoverTrigger className="mb-32 md:mb-0">Open</PopoverTrigger>
-            <PopoverContent className='bg-yellow-300'>Place content for the popover here.</PopoverContent>
+            <PopoverContent className='bg-yellow-300/70'>Place content for the popover here.</PopoverContent>
           </Popover>
         </div>
       </div>

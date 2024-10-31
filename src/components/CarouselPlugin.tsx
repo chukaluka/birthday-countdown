@@ -30,13 +30,13 @@ export function CarouselPlugin() {
   return (
     <div>
       <h1 className="text-center chi-h1 text-4xl text-black pb-3">Birthday Girl</h1>
-      <div className=" max-w-[200px] mb-24 rounded shadow-md h-fit"
+      <div className=" max-w-[200px] mb-24  shadow-md h-fit"
       >
         <Carousel
           plugins={[plugin.current]}
           onMouseEnter={plugin.current.stop}
           onMouseLeave={plugin.current.reset}
-          className='bg-transparent'
+          className=''
         >
           <CarouselContent>
           {images.map((image, index) => (
@@ -47,7 +47,7 @@ export function CarouselPlugin() {
                       <Image
                       src={image}
                       alt="Mi amor"
-                      className="w-full h-48 object-cover rounded-md" // Control height and fit
+                      className="w-full h-48 object-cover rounded-md shadow-2xl" // Control height and fit
                       // style={{ height: '200px', width: '100%', objectFit: 'cover' }} // Adjust height to your preference
                       />
                     </CardContent>
