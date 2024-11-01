@@ -6,15 +6,23 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover";
 import { CarouselPlugin } from '../../components/CarouselPlugin';
-// import audio1 from '../../music/audio1.mp3'
 import { useEffect } from 'react';
+import Lottie from 'lottie-react';
+import bd1 from '../../assets/bd1.json'
+import bd2 from '../../assets/bd2.json'
+import bd3 from '../../assets/bd3.json'
+import bd4 from '../../assets/bd4.json'
+import bd5 from '../../assets/bd5.json'
+import bd6 from '../../assets/bd6.json'
+import bd7 from '../../assets/bd7.json'
+import bd8 from '../../assets/bd8.json'
 
 
 
 export default function Page() {
 
   useEffect(() => {
-    const audio = new Audio('/music/audio1.mp3');
+    const audio = new Audio('/music/chi.mp3');
     audio.loop = true; // Set to true if you want the music to loop
     audio.play().catch((error) => {
       console.error("Audio playback failed:", error);
@@ -29,7 +37,17 @@ export default function Page() {
   
   return (
     <div className='body-div mt-56'>
-      {/* <audio src={audio1} autoPlay loop /> */}
+
+            {/* Lottie Animations scattered around */}
+    <Lottie animationData={bd1} style={{ position: 'absolute', top: '5%', left: '10%', width: 100, height: 100 }}/>
+    <Lottie animationData={bd2} style={{ position: 'absolute', top: '5%', right: '25%', width: 100, height: 100 }}/>
+    <Lottie animationData={bd3} style={{ position: 'absolute', top: '65%', left: '3%', width: 100, height: 100 }}/>
+    <Lottie animationData={bd4} style={{ position: 'absolute', top: '40%', right: '15%', width: 100, height: 100 }}/>
+    <Lottie animationData={bd5} style={{ position: 'absolute', top: '29%', left: '20%', width: 100, height: 100 }}/>
+    <Lottie animationData={bd6} style={{ position: 'absolute', top: '69%', right: '17%', width: 100, height: 100 }}/>
+    <Lottie animationData={bd7} style={{ position: 'absolute', top: '95%', left: '10%', width: 100, height: 100 }}/>
+    {/* <Lottie animationData={bd5} style={{ position: 'absolute', top: '29%', left: '7%', width: 100, height: 100 }}/> */}
+
       <div className="birthdayCard rounded shadow-md">
         <div className="cardFront">
           <h3 className="happy">Happy Birthday Chi ❤️</h3>
