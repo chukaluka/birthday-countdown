@@ -62,6 +62,7 @@ export default function Page() {
       className="birthdayCard rounded shadow-md mt-28 md:mt-11">
         <div className="cardFront">
           <h3 className="happy">Happy Birthday Chi ❤️</h3>
+          <h4 className='text-center back visible md:invisible'>tab to open</h4>
           <div className="balloons">
             <div className="balloon-1"></div>
             <div className="balloon-2"></div>
