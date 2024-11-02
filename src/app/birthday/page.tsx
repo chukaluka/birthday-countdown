@@ -59,7 +59,7 @@ export default function Page() {
       initial={{opacity: 0, y: 75}}
       whileInView={{opacity: 1, y: 0}}
       transition={{duration: 0.5, delay: 0.25}}
-      className="birthdayCard rounded shadow-md">
+      className="birthdayCard rounded shadow-md mt-28 md:mt-11">
         <div className="cardFront">
           <h3 className="happy">Happy Birthday Chi ❤️</h3>
           <div className="balloons">
@@ -84,17 +84,17 @@ export default function Page() {
       initial={{opacity: 0, y: 75}}
       whileInView={{opacity: 1, y: 0}}
       transition={{duration: 0.5, delay: 0.25}}
-      className="flex flex-col relative md:flex-row items-center justify-center mt-24 gap-10"> {/* Center content */}
+      className="flex flex-col relative md:flex-row justify-center mt-24 gap-10"> {/* Center content */}
         {/* Carousel */}
         <div className="flex justify-center mr-0 md:mr-52">
           <CarouselPlugin />
         </div>
 
         {/* Popover */}
-        <div className="flex justify-center">
+        <div className="flex justify-center ">
           <Popover>
-            <PopoverTrigger className="mb-32 md:mb-0">Open</PopoverTrigger>
-            <PopoverContent className='bg-yellow-300/70'>Place content for the popover here.</PopoverContent>
+            <PopoverTrigger className="mb-56 md:mb-0 block md:absolute top-0 chi-h1 text-4xl">Open</PopoverTrigger>
+            <PopoverContent className='bg-yellow-300/70'>To Lilian:<br/></PopoverContent>
           </Popover>
         </div>
       </motion.div>

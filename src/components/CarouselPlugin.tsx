@@ -46,7 +46,7 @@ export function CarouselPlugin() {
                     <CardContent className="">
                       <Image
                       src={image}
-                      alt="Mi amor"
+                      alt="Chi"
                       className="w-full h-48 object-cover rounded-md shadow-2xl" // Control height and fit
                       // style={{ height: '200px', width: '100%', objectFit: 'cover' }} // Adjust height to your preference
                       />
