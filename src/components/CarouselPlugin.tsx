@@ -28,8 +28,8 @@ export function CarouselPlugin() {
     const images = [chi, chi2, chi3, chi4, chi5, chi6];
 
   return (
-    <div>
-      <h1 className="text-center chi-h1 text-4xl text-black pb-3">Birthday Girl</h1>
+    <div className="mx-auto">
+      <h1 className="text-center chi-h1 text-2xl md:text-3xl text-black pb-3">Birthday Girl🎀😍</h1>
       <div className=" max-w-[200px] mb-24  shadow-md h-fit"
       >
         <Carousel

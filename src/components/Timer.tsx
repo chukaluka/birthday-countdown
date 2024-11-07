@@ -40,38 +40,8 @@ export default function Timer({ launchDate }: { launchDate: string }) {
     const interval = setInterval(() => {
       setTimeLeft(getTimeLeft(launchDate));
     }, 1000);
-
-    // Ask for notification permission
-    if (Notification.permission === "default") {
-      Notification.requestPermission();
-    }
-
-    // Check every day at midnight
-    const dailyCheck = setInterval(() => {
-      const today = new Date();
-      if (today.getHours() === 0 && today.getMinutes() === 0) {
-        sendBirthdayCountdownNotification();
-      }
-    }, 60000); // Check every minute if it's midnight
-
-    return () => {
-      clearInterval(interval);
-      clearInterval(dailyCheck);
-    };
-  }, [launchDate]);
-
-// Function to send the notification only if time is left
-const sendBirthdayCountdownNotification = () => {
-  if (
-    Notification.permission === "granted" &&
-    (timeLeft.days !== "00" || timeLeft.hours !== "00" || timeLeft.minutes !== "00" || timeLeft.seconds !== "00")
-  ) {
-    new Notification("Countdown Timer", {
-      body: `Only ${timeLeft.days} days left until your birthday! 🎉`,
-    });
   }
-};
-
+)
 
   return (
     <div>

@@ -18,6 +18,7 @@ import bd8 from '../../assets/bd8.json'
 import { motion } from 'framer-motion';
 
 
+
 export default function Page() {
 
   useEffect(() => {
@@ -85,7 +86,7 @@ export default function Page() {
       initial={{opacity: 0, y: 75}}
       whileInView={{opacity: 1, y: 0}}
       transition={{duration: 0.5, delay: 0.25}}
-      className="flex flex-col relative md:flex-row justify-center mt-24 gap-10"> {/* Center content */}
+      className="flex flex-col relative md:flex-row justify-center mt-40 gap-10"> {/* Center content */}
         {/* Carousel */}
         <div className="flex justify-center mr-0 md:mr-52">
           <CarouselPlugin />
@@ -95,7 +96,7 @@ export default function Page() {
         <div className="flex justify-center ">
           <Popover>
             <PopoverTrigger className="mb-56 md:mb-0 block md:absolute top-0 chi-h1 text-4xl">Open</PopoverTrigger>
-            <PopoverContent className='bg-yellow-300/70'>To Lilian:<br/></PopoverContent>
+            <PopoverContent className='bg-yellow-300/70 open-letter'>Hey Dear,<br/></PopoverContent>
           </Popover>
         </div>
       </motion.div>
