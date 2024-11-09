@@ -25,7 +25,7 @@ export default function Hero() {
           <button 
               className='bg-yellow-200 px-2 py-1 uppercase font-semibold rounded shadow-md mt-3'>
                 <Link href='/'>
-                  Stay tuned!
+                  Stay tuned till 11/11!
                 </Link>
           </button>
          
