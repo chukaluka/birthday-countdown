@@ -36,7 +36,7 @@ export default function Page() {
 
   
   return (
-    <div className='body-div mt-56'>
+    <div className='body-div mt-72 md:mt-80'>
 
             {/* Lottie Animations scattered around */}
     <motion.div
@@ -75,7 +75,7 @@ export default function Page() {
           <h3 className="back">HAPPY BIRTHDAY</h3>
           <p className="name-p">Ore mi,</p>
           <p className="name-p">
-            To you, I wish the best of days ahead. Nothing's going to stop you cause you're set. Happy birthday my love
+            To you, I wish the best of days ahead. Nothing's going to stop you cause you're set. Happy birthday Amor ❤️
           </p>
           <p className="name">Chuka</p>
         </div>
@@ -95,8 +95,23 @@ export default function Page() {
         {/* Popover */}
         <div className="flex justify-center ">
           <Popover>
-            <PopoverTrigger className="mb-56 md:mb-0 block md:absolute top-0 chi-h1 text-4xl">Open</PopoverTrigger>
-            <PopoverContent className='bg-yellow-300/70 open-letter'>Hey Dear,<br/></PopoverContent>
+            <PopoverTrigger className="mb-[30rem] md:mb-0 block md:absolute top-0 chi-h1 text-4xl">Click me</PopoverTrigger>
+            <PopoverContent className='bg-yellow-300/70 open-letter text-xs'>
+              Hey momma,<br/>
+              To God be the glory. You're now 22.<br/>
+              The day I met you was the day I realized you were extra special. you still are.<br/>
+              Four years on, and I'm still checking you out like it was the first day.<br/>
+              Your growth is palpable, and it's clear to see how far you've come.<br/>
+              Still on the rise with your best chapters to come.<br/>
+              May life offer bouquet of treasures, so you may bloom with ecstasy as the lilies.<br/>
+              May happiness rainbow on you, so you may spread colors of cheer to all you me.<br/>
+              May God favour you, so you can become a channel of blessing.<br/>
+              May the best of life always be yours.<br/>
+              The best of days to come.<br/>
+              <br/>
+              Soooo much LOVE for you Chi, I might be crazy for you. Lol<br/>
+              God's grace.<br/>
+            </PopoverContent>
           </Popover>
         </div>
       </motion.div>
