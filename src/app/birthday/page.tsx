@@ -60,7 +60,7 @@ export default function Page() {
       initial={{opacity: 0, y: 75}}
       whileInView={{opacity: 1, y: 0}}
       transition={{duration: 0.5, delay: 0.25}}
-      className="birthdayCard rounded shadow-md mt-32 md:mt-11">
+      className="birthdayCard rounded shadow-md mt-28 md:mt-11">
         <div className="cardFront">
           <h3 className="happy">Happy Birthday Chi ❤️</h3>
           <h4 className='text-center back visible md:invisible'>tab to open</h4>
