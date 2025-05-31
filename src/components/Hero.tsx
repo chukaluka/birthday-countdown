@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
-import Link from 'next/link';
+import Link from "next/link";
 import Timer from "./Timer";
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
@@ -32,20 +32,20 @@ export default function Hero() {
           <div className="border-b pt-3"></div>
 
           <button
-            className="bg-yellow-200 px-2 py-1  font-bold rounded shadow-md mt-3 chi-h1"
-            onClick={() => {
-              const response = window.prompt(
-                "Are you Zee? Don't you dare lie, Type yes, if so"
-              );
-              // Optionally, you can handle the response here
-              if (response && response.toLowerCase() === "yes") {
-                alert(
-                  "Welcome Zee! 🎉, BUT YOU'LL HAVE TO WAIT TILL IT'S YOUR BIRTHDAY TO SEE THE CONTENT 🤗"
-                );
-              }
-            }}
+            className="bg-yellow-200 px-2 py-1 uppercase font-bold rounded shadow-md mt-3 chi-h1"
+            // onClick={() => {
+            //   const response = window.prompt(
+            //     "Are you Zee? Don't you dare lie, Type yes, if so"
+            //   );
+            //   // Optionally, you can handle the response here
+            //   if (response && response.toLowerCase() === "yes") {
+            //     alert(
+            //       "Welcome Zee! 🎉, BUT YOU'LL HAVE TO WAIT TILL IT'S YOUR BIRTHDAY TO SEE THE CONTENT 🤗"
+            //     );
+            //   }
+            // }}
           >
-            <Link href="/">Click me if you're Zee</Link>
+            <Link href="/birthday">Click me</Link>
           </button>
         </div>
       </section>

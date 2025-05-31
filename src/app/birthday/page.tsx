@@ -22,20 +22,17 @@ import { motion } from 'framer-motion';
 export default function Page() {
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const audio = new Audio("/music/chi.mp3");
-      audio.loop = true;
-      audio.play().catch((error) => {
-        console.error("Audio playback failed:", error);
-      });
+    const audio = new Audio('/music/chi.mp3');
+    audio.loop = true; // Set to true if you want the music to loop
+    audio.play().catch((error) => {
+      console.error("Audio playback failed:", error);
+    });
 
-      return () => {
-        audio.pause();
-        audio.currentTime = 0;
-      };
-    }
+    return () => {
+      audio.pause(); // Pause the audio when the component unmounts
+      audio.currentTime = 0; // Reset the audio to the start
+    };
   }, []);
-  
 
   
   return (
@@ -65,7 +62,7 @@ export default function Page() {
       transition={{duration: 0.5, delay: 0.25}}
       className="birthdayCard rounded shadow-md mt-32 md:mt-11">
         <div className="cardFront">
-          <h3 className="happy">Happy Birthday Chi ❤️</h3>
+          <h3 className="happy">Happy Birthday Zee ❤️</h3>
           <h4 className='text-center back visible md:invisible'>tab to open</h4>
           <div className="balloons">
             <div className="balloon-1"></div>
@@ -76,9 +73,9 @@ export default function Page() {
         </div>
         <div className="cardInside">
           <h3 className="back">HAPPY BIRTHDAY</h3>
-          <p className="name-p">Ore mi,</p>
+          <p className="name-p">Hey Zee </p>
           <p className="name-p">
-            To you, I wish the best of days ahead. Nothing's going to stop you cause you're set. Happy birthday Amor ❤️
+            The more you praise and celebrate your life, the more there is in life to celebrate. Happy birthday dear ❤️
           </p>
           <p className="name">Chuka</p>
         </div>
@@ -101,19 +98,19 @@ export default function Page() {
             <PopoverTrigger className="mb-[30rem] md:mb-0 block md:absolute top-0 chi-h1 text-4xl">Click me</PopoverTrigger>
             <PopoverContent className='bg-yellow-300/70 open-letter text-xs'>
               Hey momma,<br/>
-              To God be the glory. You're now 22.<br/>
-              The day I met you was the day I realized you were extra special. you still are.<br/>
-              Four years on, and I'm still checking you out like it was the first day.<br/>
-              Your growth is palpable, and it's clear to see how far you've come.<br/>
+              To God be the glory. You're now 23.<br/>
+              The beginning of something new, births a world of possibilities,<br/>
+              Where dreams take flight and futures bloom.<br/>
+              It's undeniable. Your growth is palpable, and it's clear for all to see.<br/>
               Still on the rise with your best chapters to come.<br/>
               May life offer bouquet of treasures, so you may bloom with ecstasy as the lilies.<br/>
-              May happiness rainbow on you, so you may spread colors of cheer to all you me.<br/>
+              May happiness rainbow on you, so you may spread colors of cheer to all you meet.<br/>
               May God favour you, so you can become a channel of blessing.<br/>
               May the best of life always be yours.<br/>
-              The best of days to come.<br/>
+              Cheers to your new age Ezinne Felizianna Nwaeze.<br/>
               <br/>
-              Soooo much LOVE for you Chi, I might be crazy for you. Lol<br/>
-              God's grace.<br/>
+              PS: You are special.<br/>
+              PPS: Eat all the cakes you want<br/>
             </PopoverContent>
           </Popover>
         </div>
