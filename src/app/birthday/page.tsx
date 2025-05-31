@@ -22,16 +22,18 @@ import { motion } from 'framer-motion';
 export default function Page() {
 
   useEffect(() => {
-    const audio = new Audio('/music/chi.mp3');
-    audio.loop = true; // Set to true if you want the music to loop
-    audio.play().catch((error) => {
-      console.error("Audio playback failed:", error);
-    });
+    if (typeof window !== "undefined") {
+      const audio = new Audio("/music/chi.mp3");
+      audio.loop = true;
+      audio.play().catch((error) => {
+        console.error("Audio playback failed:", error);
+      });
 
-    return () => {
-      audio.pause(); // Pause the audio when the component unmounts
-      audio.currentTime = 0; // Reset the audio to the start
-    };
+      return () => {
+        audio.pause();
+        audio.currentTime = 0;
+      };
+    }
   }, []);
 
   
