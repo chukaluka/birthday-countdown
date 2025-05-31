@@ -73,7 +73,7 @@ export default function Page() {
         </div>
         <div className="cardInside">
           <h3 className="back">HAPPY BIRTHDAY</h3>
-          <p className="name-p">Hey Zee </p>
+          <p className="name-p">Zee, </p>
           <p className="name-p">
             The more you praise and celebrate your life, the more there is in life to celebrate. Happy birthday dear ❤️
           </p>
@@ -109,8 +109,7 @@ export default function Page() {
               May the best of life always be yours.<br/>
               Cheers to your new age Ezinne Felizianna Nwaeze.<br/>
               <br/>
-              PS: You are special.<br/>
-              PPS: Eat all the cakes you want<br/>
+              PS: Make sure you eat all the cakes in Adamawa, don't worry, they'll understand it's your birthday.<br/>
             </PopoverContent>
           </Popover>
         </div>
