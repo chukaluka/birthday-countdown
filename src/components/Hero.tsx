@@ -45,7 +45,7 @@ export default function Hero() {
             //   }
             // }}
           >
-            <Link href="/birthday">Click me</Link>
+            <Link href="/birthday">Click me birthday girl</Link>
           </button>
         </div>
       </section>
