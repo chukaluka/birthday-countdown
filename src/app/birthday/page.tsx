@@ -263,7 +263,7 @@ export default function Page() {
 
         <div className="flex justify-center">
           <div className="flex justify-start items-center bg-white shadow-lg rounded-xl p-8 md:p-6 gap-4 md:gap-6 max-w-2xl mx-4 md:mx-auto">
-            <div className="relative w-32 h-32 md:w-32 md:h-32 rounded-full overflow-hidden shadow-md">
+            <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden shadow-md">
               <Image
                 src={enwongoPic}
                 alt="Enwongo"
