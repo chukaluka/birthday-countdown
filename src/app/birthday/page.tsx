@@ -1,12 +1,19 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { CarouselPlugin } from "../../components/CarouselPlugin";
-import Lottie from "lottie-react";
+import dynamic from "next/dynamic";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import enwongoPic from "../../assets/chi.jpg";
+
+// Import Popover and Carousel normally
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+// import { CarouselPlugin } from "../../components/CarouselPlugin";
+
+// Dynamic imports for client-only components
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
+const Confetti = dynamic(() => import("react-confetti"), { ssr: false });
+
+// Lottie animation JSONs
 import bd1 from "../../assets/bd1.json";
 import bd2 from "../../assets/bd2.json";
 import bd3 from "../../assets/bd3.json";
@@ -15,16 +22,12 @@ import bd5 from "../../assets/bd5.json";
 import bd6 from "../../assets/bd6.json";
 import bd7 from "../../assets/bd7.json";
 import bd8 from "../../assets/bd8.json";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import enwongoPic from "../../assets/chi.jpg";
-import Confetti from "react-confetti";
 
 export default function Page() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [confettiActive, setConfettiActive] = useState(false);
   const [message, setMessage] = useState(
-    "Happy birthday to you, my dear friend! I hope this year brings you all the happiness and success you deserve",
+    "Happy birthday to you, my dear friend! I hope this year brings you all the happiness and success you deserve"
   );
   const [clickCount, setClickCount] = useState(0);
   const [showSecretButton, setShowSecretButton] = useState(false);
@@ -49,51 +52,37 @@ export default function Page() {
 
     setClickCount((prev) => {
       const newCount = prev + 1;
-
-      if (newCount >= 4) {
-        setShowSecretButton(true);
-      }
-
+      if (newCount >= 4) setShowSecretButton(true);
       return newCount;
     });
   };
 
   const fadeDownAudio = () => {
     if (!audioRef.current) return;
-
     const audio = audioRef.current;
     const fadeInterval = setInterval(() => {
-      if (audio.volume > 0.1) {
-        audio.volume = Math.max(audio.volume - 0.02, 0.1);
-      } else {
-        clearInterval(fadeInterval);
-      }
+      if (audio.volume > 0.1) audio.volume = Math.max(audio.volume - 0.02, 0.1);
+      else clearInterval(fadeInterval);
     }, 100);
   };
 
   const fadeUpAudio = () => {
     if (!audioRef.current) return;
-
     const audio = audioRef.current;
     const fadeInterval = setInterval(() => {
-      if (audio.volume < 0.3) {
-        audio.volume = Math.min(audio.volume + 0.02, 0.3); // restore to target volume
-      } else {
-        clearInterval(fadeInterval);
-      }
+      if (audio.volume < 0.3) audio.volume = Math.min(audio.volume + 0.02, 0.3);
+      else clearInterval(fadeInterval);
     }, 100);
   };
 
+  // Audio setup
   useEffect(() => {
     const audio = new Audio("/music/happy-birthday.mp3");
     audio.loop = true;
     audio.volume = 0;
+    audioRef.current = audio;
 
-    audioRef.current = audio; // ✅ store it
-
-    audio.play().catch((error) => {
-      console.error("Audio playback failed:", error);
-    });
+    audio.play().catch((error) => console.error("Audio playback failed:", error));
 
     let targetVolume = 0.3;
     let fadeDuration = 5000;
@@ -101,11 +90,8 @@ export default function Page() {
     let intervalTime = (fadeDuration * fadeStep) / targetVolume;
 
     const fadeInInterval = setInterval(() => {
-      if (audio.volume < targetVolume) {
-        audio.volume = Math.min(audio.volume + fadeStep, targetVolume);
-      } else {
-        clearInterval(fadeInInterval);
-      }
+      if (audio.volume < targetVolume) audio.volume = Math.min(audio.volume + fadeStep, targetVolume);
+      else clearInterval(fadeInInterval);
     }, intervalTime);
 
     return () => {
@@ -115,15 +101,17 @@ export default function Page() {
     };
   }, []);
 
+  // Window size (client-side only)
   useEffect(() => {
-    setWindowSize({ width: window.innerWidth, height: window.innerHeight });
-
-    const handleResize = () => {
+    if (typeof window !== "undefined") {
       setWindowSize({ width: window.innerWidth, height: window.innerHeight });
-    };
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+      const handleResize = () =>
+        setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
   }, []);
 
   return (
@@ -131,78 +119,23 @@ export default function Page() {
       {confettiActive && windowSize.width > 0 && (
         <Confetti width={windowSize.width} height={windowSize.height} />
       )}
-      {/* Lottie Animations scattered around */}
+
+      {/* Lottie Animations */}
       <motion.div
         initial={{ opacity: 0, y: 75 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.25 }}
         viewport={{ once: true }}
       >
-        <Lottie
-          animationData={bd1}
-          style={{
-            position: "absolute",
-            top: "5%",
-            left: "25%",
-            width: 100,
-            height: 100,
-          }}
-        />
-
-        <Lottie
-          animationData={bd3}
-          style={{
-            position: "absolute",
-            top: "5%",
-            right: "25%",
-            width: 100,
-            height: 100,
-          }}
-        />
-        <Lottie
-          animationData={bd2}
-          style={{
-            position: "absolute",
-            top: "35%",
-            left: "23%",
-            width: 100,
-            height: 100,
-          }}
-        />
-        <Lottie
-          animationData={bd5}
-          style={{
-            position: "absolute",
-            top: "40%",
-            right: "23%",
-            width: 100,
-            height: 100,
-          }}
-        />
-        <Lottie
-          animationData={bd4}
-          style={{
-            position: "absolute",
-            top: "64%",
-            left: "23%",
-            width: 100,
-            height: 100,
-          }}
-        />
-        <Lottie
-          animationData={bd8}
-          style={{
-            position: "absolute",
-            top: "65%",
-            right: "23%",
-            width: 100,
-            height: 100,
-          }}
-        />
-        {/* <Lottie animationData={bd7} style={{ position: 'absolute', top: '95%', left: '10%', width: 100, height: 100 }}/>
-    <Lottie animationData={bd6} style={{ position: 'absolute', top: '29%', left: '7%', width: 100, height: 100 }}/> */}
+        <Lottie animationData={bd1} style={{ position: "absolute", top: "5%", left: "25%", width: 100, height: 100 }} />
+        <Lottie animationData={bd3} style={{ position: "absolute", top: "5%", right: "25%", width: 100, height: 100 }} />
+        <Lottie animationData={bd2} style={{ position: "absolute", top: "35%", left: "23%", width: 100, height: 100 }} />
+        <Lottie animationData={bd5} style={{ position: "absolute", top: "40%", right: "23%", width: 100, height: 100 }} />
+        <Lottie animationData={bd4} style={{ position: "absolute", top: "64%", left: "23%", width: 100, height: 100 }} />
+        <Lottie animationData={bd8} style={{ position: "absolute", top: "65%", right: "23%", width: 100, height: 100 }} />
       </motion.div>
 
+      {/* Birthday card */}
       <motion.div
         initial={{ opacity: 0, y: 75 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -221,22 +154,18 @@ export default function Page() {
         </div>
         <div className="cardInside">
           <h3 className="back">HAPPY BIRTHDAY</h3>
-          {/* <p className="name-p">Enwongo, </p> */}
-          <p className="name-p">
-            Wishing you the most magical day filled with love and joy
-          </p>
+          <p className="name-p">Wishing you the most magical day filled with love and joy</p>
           <p className="name">Chuka</p>
         </div>
       </motion.div>
 
+      {/* Magic button */}
       <motion.div
         initial={{ opacity: 0, y: 75 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.25 }}
         className="flex flex-col relative md:flex-row justify-center mt-40 gap-10 pb-20"
       >
-        {" "}
-        <div></div>
         <div className="flex justify-center mt-6">
           <button
             onClick={handleMagicClick}
@@ -245,6 +174,7 @@ export default function Page() {
             🎂 Birthday Magic button 🎂
           </button>
         </div>
+
         {showSecretButton && (
           <div className="flex justify-center mt-4">
             <button
@@ -255,64 +185,33 @@ export default function Page() {
             </button>
           </div>
         )}
+
         <div className="flex justify-center">
-          {/* <CarouselPlugin /> */}
-
-          <div
-            className="flex justify-start items-center bg-white shadow-lg rounded-xl 
-p-8 md:p-6 gap-4 md:gap-6 max-w-2xl mx-4 md:mx-auto"
-          >
+          <div className="flex justify-start items-center bg-white shadow-lg rounded-xl p-8 md:p-6 gap-4 md:gap-6 max-w-2xl mx-4 md:mx-auto">
             <div className="relative w-32 h-32 md:w-32 md:h-32 rounded-full overflow-hidden shadow-md">
-              <Image
-                src={enwongoPic}
-                alt="Enwongo"
-                className="object-cover"
-                fill
-              />
+              <Image src={enwongoPic} alt="Enwongo" className="object-cover" fill />
             </div>
-
             <div className="flex-1">
-              <p className="text-base md:text-lg text-gray-800 font-medium">
-                {message}
-              </p>
+              <p className="text-base md:text-lg text-gray-800 font-medium">{message}</p>
             </div>
           </div>
-          <div></div>
         </div>
-        {/* <div className="flex justify-center ">
-          <Popover>
-            <PopoverTrigger className="mb-[30rem] md:mb-0 block md:absolute top-0 chi-h1 text-4xl text-white">
-              💝 Open Special Message
-            </PopoverTrigger>
-            <PopoverContent className="bg-white-300/70 open-letter text-lg text-white">
-              Happy birthday to you, my dear friend! I hope this year brings you
-              all the happiness and success you deserve
-            </PopoverContent>
-          </Popover>
-        </div> */}
       </motion.div>
 
+      {/* Video overlay */}
       {showVideo && (
         <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
           <div className="relative bg-black rounded-xl p-3 shadow-2xl">
-            {/* Close Button */}
             <button
               onClick={() => {
-                setShowVideo(false); // ✅ actually close the video
-                fadeUpAudio(); // ✅ bring audio volume back up
+                setShowVideo(false);
+                fadeUpAudio();
               }}
               className="absolute -top-3 -right-3 bg-white text-black rounded-full w-8 h-8 flex items-center justify-center font-bold shadow-md"
             >
               ✕
             </button>
-
-            {/* Video */}
-            <video
-              src="/video/happy-birthday.mp4"
-              controls
-              autoPlay
-              className="w-[300px] md:w-[500px] rounded-lg"
-            />
+            <video src="/video/happy-birthday.mp4" controls autoPlay className="w-[300px] md:w-[500px] rounded-lg" />
           </div>
         </div>
       )}
