@@ -243,7 +243,7 @@ export default function Page() {
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 1 }}
-          className="text-3xl text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.8)]"
+          className="text-6xl text-yellow-400 drop-shadow-[0_0_12px_rgba(250,204,21,0.9)] mt-10"
         >
           ↓
         </motion.div>
