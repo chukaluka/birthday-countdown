@@ -7,6 +7,18 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   const [showConfetti, setShowConfetti] = useState(false);
+  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
+
+  useEffect(() => {
+    setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+
+    const handleResize = () => {
+      setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     setShowConfetti(true);
@@ -28,8 +40,8 @@ export default function Hero() {
       className="flex justify-center items-center mx-auto h-screen max-w-[330px] md:max-w-[900px]"
     >
       <div>
-        {showConfetti && (
-          <Confetti width={window.innerWidth} height={window.innerHeight} />
+        {showConfetti && windowSize.width > 0 && (
+          <Confetti width={windowSize.width} height={windowSize.height} />
         )}
       </div>
       <section className="w-full flex flex-row justify-between items-center">

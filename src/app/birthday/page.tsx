@@ -29,6 +29,7 @@ export default function Page() {
   const [clickCount, setClickCount] = useState(0);
   const [showSecretButton, setShowSecretButton] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
+  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
 
   const messages = [
     "Today is all about you, Enwongo 💝",
@@ -114,10 +115,21 @@ export default function Page() {
     };
   }, []);
 
+  useEffect(() => {
+    setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+
+    const handleResize = () => {
+      setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div className="body-div mt-56 md:mt-80">
-      {confettiActive && (
-        <Confetti width={window.innerWidth} height={window.innerHeight} />
+      {confettiActive && windowSize.width > 0 && (
+        <Confetti width={windowSize.width} height={windowSize.height} />
       )}
       {/* Lottie Animations scattered around */}
       <motion.div
