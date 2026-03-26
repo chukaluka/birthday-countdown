@@ -3,10 +3,14 @@ import React, { useState, useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import enwongoPic from "../../assets/chi.jpg";
+import enwongoPic from "../../assets/enwongo.jpg";
 
 // Import Popover and Carousel normally
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 // import { CarouselPlugin } from "../../components/CarouselPlugin";
 
 // Dynamic imports for client-only components
@@ -27,7 +31,7 @@ export default function Page() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [confettiActive, setConfettiActive] = useState(false);
   const [message, setMessage] = useState(
-    "Happy birthday to you, my dear friend! I hope this year brings you all the happiness and success you deserve"
+    "Happy birthday to you, my dear friend! I hope this year brings you all the happiness and success you deserve",
   );
   const [clickCount, setClickCount] = useState(0);
   const [showSecretButton, setShowSecretButton] = useState(false);
@@ -57,21 +61,25 @@ export default function Page() {
     });
   };
 
-  const fadeDownAudio = () => {
-    if (!audioRef.current) return;
-    const audio = audioRef.current;
-    const fadeInterval = setInterval(() => {
-      if (audio.volume > 0.1) audio.volume = Math.max(audio.volume - 0.02, 0.1);
-      else clearInterval(fadeInterval);
-    }, 100);
-  };
-
   const fadeUpAudio = () => {
     if (!audioRef.current) return;
     const audio = audioRef.current;
     const fadeInterval = setInterval(() => {
       if (audio.volume < 0.3) audio.volume = Math.min(audio.volume + 0.02, 0.3);
       else clearInterval(fadeInterval);
+    }, 100);
+  };
+
+  const fadeDownAudio = () => {
+    if (!audioRef.current) return;
+    const audio = audioRef.current;
+
+    const fadeInterval = setInterval(() => {
+      if (audio.volume > 0.15) {
+        audio.volume = Math.max(audio.volume - 0.02, 0.15);
+      } else {
+        clearInterval(fadeInterval);
+      }
     }, 100);
   };
 
@@ -82,7 +90,9 @@ export default function Page() {
     audio.volume = 0;
     audioRef.current = audio;
 
-    audio.play().catch((error) => console.error("Audio playback failed:", error));
+    audio
+      .play()
+      .catch((error) => console.error("Audio playback failed:", error));
 
     let targetVolume = 0.3;
     let fadeDuration = 5000;
@@ -90,7 +100,8 @@ export default function Page() {
     let intervalTime = (fadeDuration * fadeStep) / targetVolume;
 
     const fadeInInterval = setInterval(() => {
-      if (audio.volume < targetVolume) audio.volume = Math.min(audio.volume + fadeStep, targetVolume);
+      if (audio.volume < targetVolume)
+        audio.volume = Math.min(audio.volume + fadeStep, targetVolume);
       else clearInterval(fadeInInterval);
     }, intervalTime);
 
@@ -100,6 +111,14 @@ export default function Page() {
       audio.currentTime = 0;
     };
   }, []);
+
+  useEffect(() => {
+    if (showVideo) {
+      fadeDownAudio(); // 🔉 reduce volume when video opens
+    } else {
+      fadeUpAudio(); // 🔊 restore when video closes
+    }
+  }, [showVideo]);
 
   // Window size (client-side only)
   useEffect(() => {
@@ -127,12 +146,66 @@ export default function Page() {
         transition={{ duration: 0.5, delay: 0.25 }}
         viewport={{ once: true }}
       >
-        <Lottie animationData={bd1} style={{ position: "absolute", top: "5%", left: "25%", width: 100, height: 100 }} />
-        <Lottie animationData={bd3} style={{ position: "absolute", top: "5%", right: "25%", width: 100, height: 100 }} />
-        <Lottie animationData={bd2} style={{ position: "absolute", top: "35%", left: "23%", width: 100, height: 100 }} />
-        <Lottie animationData={bd5} style={{ position: "absolute", top: "40%", right: "23%", width: 100, height: 100 }} />
-        <Lottie animationData={bd4} style={{ position: "absolute", top: "64%", left: "23%", width: 100, height: 100 }} />
-        <Lottie animationData={bd8} style={{ position: "absolute", top: "65%", right: "23%", width: 100, height: 100 }} />
+        <Lottie
+          animationData={bd1}
+          style={{
+            position: "absolute",
+            top: "5%",
+            left: "25%",
+            width: 100,
+            height: 100,
+          }}
+        />
+        <Lottie
+          animationData={bd3}
+          style={{
+            position: "absolute",
+            top: "5%",
+            right: "25%",
+            width: 100,
+            height: 100,
+          }}
+        />
+        <Lottie
+          animationData={bd2}
+          style={{
+            position: "absolute",
+            top: "35%",
+            left: "23%",
+            width: 100,
+            height: 100,
+          }}
+        />
+        <Lottie
+          animationData={bd5}
+          style={{
+            position: "absolute",
+            top: "40%",
+            right: "23%",
+            width: 100,
+            height: 100,
+          }}
+        />
+        <Lottie
+          animationData={bd4}
+          style={{
+            position: "absolute",
+            top: "64%",
+            left: "23%",
+            width: 100,
+            height: 100,
+          }}
+        />
+        <Lottie
+          animationData={bd8}
+          style={{
+            position: "absolute",
+            top: "65%",
+            right: "23%",
+            width: 100,
+            height: 100,
+          }}
+        />
       </motion.div>
 
       {/* Birthday card */}
@@ -154,7 +227,9 @@ export default function Page() {
         </div>
         <div className="cardInside">
           <h3 className="back">HAPPY BIRTHDAY</h3>
-          <p className="name-p">Wishing you the most magical day filled with love and joy</p>
+          <p className="name-p">
+            Wishing you the most magical day filled with love and joy
+          </p>
           <p className="name">Chuka</p>
         </div>
       </motion.div>
@@ -189,10 +264,17 @@ export default function Page() {
         <div className="flex justify-center">
           <div className="flex justify-start items-center bg-white shadow-lg rounded-xl p-8 md:p-6 gap-4 md:gap-6 max-w-2xl mx-4 md:mx-auto">
             <div className="relative w-32 h-32 md:w-32 md:h-32 rounded-full overflow-hidden shadow-md">
-              <Image src={enwongoPic} alt="Enwongo" className="object-cover" fill />
+              <Image
+                src={enwongoPic}
+                alt="Enwongo"
+                className="object-cover"
+                fill
+              />
             </div>
             <div className="flex-1">
-              <p className="text-base md:text-lg text-gray-800 font-medium">{message}</p>
+              <p className="text-base md:text-lg text-gray-800 font-medium">
+                {message}
+              </p>
             </div>
           </div>
         </div>
@@ -205,13 +287,17 @@ export default function Page() {
             <button
               onClick={() => {
                 setShowVideo(false);
-                fadeUpAudio();
               }}
               className="absolute -top-3 -right-3 bg-white text-black rounded-full w-8 h-8 flex items-center justify-center font-bold shadow-md"
             >
               ✕
             </button>
-            <video src="/video/happy-birthday.mp4" controls autoPlay className="w-[300px] md:w-[500px] rounded-lg" />
+
+            <video
+              src="/video/happy-birthday.mp4"
+              controls
+              className="w-[300px] md:w-[500px] rounded-lg"
+            />
           </div>
         </div>
       )}
