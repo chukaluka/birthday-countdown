@@ -1,10 +1,24 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Confetti from "react-confetti";
 import Link from "next/link";
 import Timer from "./Timer";
 import { motion } from "framer-motion";
 
 export default function Hero() {
+  const [showConfetti, setShowConfetti] = useState(false);
+
+  useEffect(() => {
+    setShowConfetti(true);
+
+    // Stop confetti after 7 seconds
+    const timer = setTimeout(() => {
+      setShowConfetti(false);
+    }, 60000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <motion.main
       initial={{ opacity: 0, y: 75 }}
@@ -13,21 +27,26 @@ export default function Hero() {
       transition={{ duration: 1, delay: 0.25 }}
       className="flex justify-center items-center mx-auto h-screen max-w-[330px] md:max-w-[900px]"
     >
+      <div>
+        {showConfetti && (
+          <Confetti width={window.innerWidth} height={window.innerHeight} />
+        )}
+      </div>
       <section className="w-full flex flex-row justify-between items-center">
         <div className="mx-auto">
-          <h1 className="text-center md:text-start text-4xl md:text-8xl chi-h1">
-            It is{" "}
+          <h1 className="text-center md:text-start text-4xl md:text-8xl chi-h1 text-white">
+            It's{" "}
           </h1>
 
-          <Timer launchDate="2025-06-01T00:00:00" />
+          {/* <Timer launchDate="2025-06-01T00:00:00" /> */}
 
-          <h1 className="mt-3 text-4xl font-medium chi-h1">
+          <h1 className="mt-3 text-4xl font-medium chi-h1 text-white">
             {" "}
-            to{" "}
-            <span className="bg-white px-2 py-1 font-semibold rounded shadow-md">
-              Zee😍's
+            {/* to{" "} */}
+            <span className="bg-white px-2 py-1 font-semibold rounded shadow-md text-black">
+              Enwongo😍's
             </span>{" "}
-            birthday{" "}
+            Day{" "}
           </h1>
           <div className="border-b pt-3"></div>
 
@@ -45,7 +64,7 @@ export default function Hero() {
             //   }
             // }}
           >
-            <Link href="/birthday">🎉Click me birthday girl🎉</Link>
+            <Link href="/birthday">🎉Click me!!!🎉</Link>
           </button>
         </div>
       </section>

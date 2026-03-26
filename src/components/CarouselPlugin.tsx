@@ -29,8 +29,8 @@ export function CarouselPlugin() {
 
   return (
     <div className="mx-auto">
-      <h1 className="text-center chi-h1 text-2xl md:text-3xl text-black pb-3">
-        Birthday Girl🎀😍
+      <h1 className="text-center chi-h1 text-2xl md:text-3xl text-black pb-3 text-white">
+        Birthday Girl🎀
       </h1>
       <div className=" max-w-[200px] mb-5 md:mb-72  shadow-md h-fit">
         <Carousel
