@@ -134,7 +134,7 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="body-div mt-56 md:mt-80">
+    <div className="body-div mt-32 md:mt-80">
       {confettiActive && windowSize.width > 0 && (
         <Confetti width={windowSize.width} height={windowSize.height} />
       )}
@@ -232,6 +232,21 @@ export default function Page() {
           </p>
           <p className="name">Chuka</p>
         </div>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1 }}
+        className="flex flex-col items-center mt-10"
+      >
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 1 }}
+          className="text-3xl text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.8)]"
+        >
+          ↓
+        </motion.div>
       </motion.div>
 
       {/* Magic button */}
