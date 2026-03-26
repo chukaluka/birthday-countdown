@@ -272,7 +272,7 @@ export default function Page() {
               />
             </div>
             <div className="flex-1">
-              <p className="text-base md:text-lg text-gray-800 font-medium">
+              <p className="chi-h1 md:text-lg text-gray-800 font-medium">
                 {message}
               </p>
             </div>
